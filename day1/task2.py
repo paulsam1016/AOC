@@ -29,7 +29,8 @@ num_dict = {
 for line in lines:
     string = line
 
-    matches = re.finditer(r'(?=(\d|one|two|three|four|five|six|seven|eight|nine))', string)     # Find all numbers (text and digits)
+    # Find all numbers (text and digits)
+    matches = re.finditer(r'(?=(\d|one|two|three|four|five|six|seven|eight|nine))', string)
     found_texts = []
     for match in matches:
         number = match.group(1)
@@ -39,11 +40,6 @@ for line in lines:
         else:
             found_texts.append(number)
     number = int(found_texts[0] + found_texts[-1])
-
-    # first = re.search("\d", string)  # Find first digit
-    # line = line[::-1]  # Reverse String
-    # last = re.search("\d", line)  # Find last digit
-    # number = int(first[0] + last[0])
 
     sum += number
 

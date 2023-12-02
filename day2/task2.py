@@ -32,6 +32,7 @@ for game in games:
     gameId, game = string.split(": ")
     gameSets = game.split('; ')
     for gameSet in gameSets:
+        # 1
         # Get number of cubes per color
         red = find_cubes(gameSet, 'red')
         green = find_cubes(gameSet, 'green')
@@ -41,6 +42,7 @@ for game in games:
         greenPower = max(green, greenPower)
         bluePower = max(blue, bluePower)
 
+        # 2
         # Better way for Python
         # colors = [x.split() for x in gameSet.split(", ")]
         # counts = {b: int(a) for a, b in colors}

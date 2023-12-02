@@ -1,6 +1,8 @@
 import re
+from os import path
+location = path.dirname(path.realpath(__file__))
 
-x = open(file="input.txt")
+x = open(file=f"{location}/input.txt")
 sum_cali = 0
 lines = x.readlines()
 

@@ -1,6 +1,8 @@
 import re
+from os import path
+location = path.dirname(path.realpath(__file__))
 
-x = open(file="input.txt")
+x = open(file=f"{location}/input.txt")
 games = x.readlines()
 
 # ex = '''Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green

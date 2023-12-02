@@ -1,7 +1,7 @@
 import re
 
 x = open(file="input.txt")
-sum = 0
+sum_cali = 0
 lines = x.readlines()
 
 num_dict = {
@@ -16,6 +16,7 @@ num_dict = {
     'nine': '9',
 }
 
+
 # ex = '''two1nine
 # eightwothree
 # abcone2threexyz
@@ -26,21 +27,20 @@ num_dict = {
 
 # lines = ex.split('\n')
 
+def convert_to_digit(text):
+    if text in num_dict:
+        return num_dict[text]
+    else:
+        return text
+
+
 for line in lines:
-    string = line
-
     # Find all numbers (text and digits)
-    matches = re.finditer(r'(?=(\d|one|two|three|four|five|six|seven|eight|nine))', string)
-    found_texts = []
-    for match in matches:
-        number = match.group(1)
-        # Convert all text numbers to digits
-        if number in num_dict:
-            found_texts.append(num_dict[number])
-        else:
-            found_texts.append(number)
-    number = int(found_texts[0] + found_texts[-1])
+    matches = list(re.finditer(r'(?=(\d|one|two|three|four|five|six|seven|eight|nine))', line))
+    tensDigit = convert_to_digit(matches[0].group(1))
+    onesDigit = convert_to_digit(matches[-1].group(1))
+    number = int(tensDigit + onesDigit)
 
-    sum += number
+    sum_cali += number
 
-print(sum)
+print(sum_cali)

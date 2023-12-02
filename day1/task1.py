@@ -1,7 +1,7 @@
 import re
 
 x = open(file="input.txt")
-sum = 0
+sum_cali = 0
 lines = x.readlines()
 
 # ex = '''two1nine
@@ -15,13 +15,11 @@ lines = x.readlines()
 # lines = ex.split('\n')
 
 for line in lines:
-    string = line
-
-    first = re.search("\d", string)  # Find first digit
-    line = line[::-1]  # Reverse String
-    last = re.search("\d", line)  # Find last digit
+    first = re.search("\d", line)  # Find first digit
+    reversedLine = line[::-1]  # Reverse String
+    last = re.search("\d", reversedLine)  # Find last digit
     number = int(first[0] + last[0])
 
-    sum += number
+    sum_cali += number
 
-print(sum)
+print(sum_cali)

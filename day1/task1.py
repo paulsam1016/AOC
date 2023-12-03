@@ -2,9 +2,9 @@ import re
 from os import path
 location = path.dirname(path.realpath(__file__))
 
-x = open(file=f"{location}/input.txt")
+f = open(file=f"{location}/input.txt")
 sum_cali = 0
-lines = x.readlines()
+lines = f.readlines()
 
 # ex = '''two1nine
 # eightwothree

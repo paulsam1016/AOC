@@ -4,7 +4,7 @@ from os import path
 location = path.dirname(path.realpath(__file__))
 
 f = open(file=f"{location}/input.txt")
-lines = f.readlines()
+lines = f.read().splitlines()
 
 # ex = '''467..114..
 # ...*......
@@ -22,8 +22,7 @@ lines = f.readlines()
 sumPartNumbers = 0
 
 for row, line in enumerate(lines):
-    string = line.rstrip()
-    matches = re.finditer(r'\d+', string)
+    matches = re.finditer(r'\d+', line)
 
     for match in matches:
         partNumber = int(match.group(0))

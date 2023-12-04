@@ -4,7 +4,7 @@ from os import path
 location = path.dirname(path.realpath(__file__))
 
 f = open(file=f"{location}/input.txt")
-lines = f.readlines()
+lines = f.read().splitlines()
 
 # ex = '''Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
 # Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
@@ -18,7 +18,7 @@ lines = f.readlines()
 winCounts = defaultdict(lambda: 0, {})
 
 for line in lines:
-    card, string = line.rstrip().split(': ')
+    card, string = line.split(': ')
     card = int(card.split()[1])
     winners, numbers = map(str.split, string.split(' | '))
     # print(card)

@@ -4,7 +4,7 @@ location = path.dirname(path.realpath(__file__))
 
 f = open(file=f"{location}/input.txt")
 sum_cali = 0
-lines = f.readlines()
+lines = f.read().splitlines()
 
 num_dict = {
     'one': '1',

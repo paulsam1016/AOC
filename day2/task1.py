@@ -3,7 +3,7 @@ from os import path
 location = path.dirname(path.realpath(__file__))
 
 f = open(file=f"{location}/input.txt")
-games = f.readlines()
+games = f.read().splitlines()
 
 # ex = '''Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 # Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
@@ -28,9 +28,8 @@ def find_cubes(game_set, color):
 
 
 for game in games:
-    string = game.strip()
-    gameId, game = string.split(": ")
-    gameSets = game.split('; ')
+    gameId, gameSets = game.split(": ")
+    gameSets = gameSets.split('; ')
     for gameSet in gameSets:
         # 1
         # Get number of cubes per color

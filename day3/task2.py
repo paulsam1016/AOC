@@ -4,7 +4,7 @@ from os import path
 location = path.dirname(path.realpath(__file__))
 
 f = open(file=f"{location}/input.txt")
-lines = f.readlines()
+lines = f.read().splitlines()
 
 # ex = '''467..114..
 # ...*......
@@ -23,10 +23,9 @@ lines = f.readlines()
 gearRatio = 0
 
 for rowIndex, line in enumerate(lines):
-    string = line.rstrip()
-    matches = list(re.finditer(r'\*', string))
+    matches = list(re.finditer(r'\*', line))
     for match in matches:
-        lineLength = len(string)
+        lineLength = len(line)
         index = match.start()
         numbers = []
 

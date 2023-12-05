@@ -1,20 +1,16 @@
 import re
 from os import path
-location = path.dirname(path.realpath(__file__))
 
-f = open(file=f"{location}/input.txt")
-sum_cali = 0
+location = path.dirname(path.realpath(__file__))
+IS_SAMPLE = False
+
+if IS_SAMPLE:
+    f = open(file=f"{location}/sample.txt")
+else:
+    f = open(file=f"{location}/input.txt")
 lines = f.read().splitlines()
 
-# ex = '''two1nine
-# eightwothree
-# abcone2threexyz
-# xtwone3four
-# 4nineeightseven2
-# zoneight234
-# 7pqrstsixteen'''
-
-# lines = ex.split('\n')
+sum_cali = 0
 
 for line in lines:
     first = re.search("\d", line)  # Find first digit

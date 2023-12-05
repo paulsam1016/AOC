@@ -1,10 +1,16 @@
 import re
 from os import path
-location = path.dirname(path.realpath(__file__))
 
-f = open(file=f"{location}/input.txt")
-sum_cali = 0
+location = path.dirname(path.realpath(__file__))
+IS_SAMPLE = False
+
+if IS_SAMPLE:
+    f = open(file=f"{location}/sample.txt")
+else:
+    f = open(file=f"{location}/input.txt")
 lines = f.read().splitlines()
+
+sum_cali = 0
 
 num_dict = {
     'one': '1',
@@ -18,16 +24,6 @@ num_dict = {
     'nine': '9',
 }
 
-
-# ex = '''two1nine
-# eightwothree
-# abcone2threexyz
-# xtwone3four
-# 4nineeightseven2
-# zoneight234
-# 7pqrstsixteen'''
-
-# lines = ex.split('\n')
 
 def convert_to_digit(text):
     if text in num_dict:

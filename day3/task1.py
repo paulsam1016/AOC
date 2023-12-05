@@ -2,22 +2,13 @@ import re
 from os import path
 
 location = path.dirname(path.realpath(__file__))
+IS_SAMPLE = False
 
-f = open(file=f"{location}/input.txt")
+if IS_SAMPLE:
+    f = open(file=f"{location}/sample.txt")
+else:
+    f = open(file=f"{location}/input.txt")
 lines = f.read().splitlines()
-
-# ex = '''467..114..
-# ...*......
-# ..35..633.
-# ......#...
-# 617*......
-# .....+.58.
-# ..592.....
-# ......755.
-# ...$.*....
-# .664.598..'''
-#
-# lines = ex.split('\n')
 
 sumPartNumbers = 0
 

@@ -18,6 +18,7 @@ for seed in seeds:
     data = int(seed)
     categoryNumbers = [data]
 
+    # Looping through Category maps
     for mapping in mappings:
         _, *ranges = mapping.splitlines()  # Removes starting text
         ranges = [list(map(int, r.split())) for r in ranges]  # Parse ranges to list after converting to int

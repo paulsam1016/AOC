@@ -18,30 +18,32 @@ seeds = []
 for i in range(0, len(inputs), 2):
     seeds.append((int(inputs[i]), int(inputs[i]) + int(inputs[i + 1])))
 
-# seeds = [(79, 92)]
+old_category = seeds   # First categeroy
 
+# Looping through Category maps
 for mapping in mappings:
     _, *ranges = mapping.splitlines()  # Removes starting text
     ranges = [list(map(int, r.split())) for r in ranges]  # Parse ranges to list after converting to int
-    new = []
+    new_category = []
+
     # Continue looping till all seed ranges are used
-    while len(seeds) > 0:
-        # print(f'seeds:{seeds}')
-        lower, upper = seeds.pop()
+    while len(old_category) > 0:
+        # print(f'old category:{old_category}')
+        lower, upper = old_category.pop()
         for destination, source, _range in ranges:
-            outer_lower = max(lower, source)
-            outer_upper = min(upper, source + _range)
-            if outer_lower < outer_upper:
-                new.append((outer_lower - source + destination, outer_upper - source + destination))
-                if outer_lower > lower:
-                    seeds.append((lower, outer_lower))
-                if upper > outer_upper:
-                    seeds.append((outer_upper, upper))
+            overlapping_lower = max(lower, source)  # Overlapping lower
+            overlapping_upper = min(upper, source + _range)  # Overlapping upper
+            if overlapping_lower < overlapping_upper:
+                new_category.append((overlapping_lower - source + destination, overlapping_upper - source + destination))  # Add overlapping range to next category
+                if overlapping_lower > lower:
+                    old_category.append((lower, overlapping_lower))  # Add left outer range to old_category ranges
+                if upper > overlapping_upper:
+                    old_category.append((overlapping_upper, upper))  # Add right outer range to old_category ranges
                 break
         else:
-            new.append((lower, upper))
-    seeds = new
-    # print(f'new seeds:{seeds}')
+            new_category.append((lower, upper))
+    old_category = new_category
+    # print(f'new category:{old_category}')
     # print('-------------------')
 
-print(f'lowest location: {min(seeds)[0]}')
+print(f'lowest location: {min(old_category)[0]}')

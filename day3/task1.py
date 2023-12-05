@@ -27,7 +27,7 @@ for row, line in enumerate(lines):
             if -1 < r < len(lines):
                 searchLine = lines[r].rstrip()
                 for c in range(match.start() - 1, match.end() + 1):
-                    if -1 < c < len(searchLine) and not searchLine[c].isnumeric() and not searchLine[c] == '.':
+                    if -1 < c < len(searchLine) and not searchLine[c].isnumeric() and searchLine[c] != '.':
                         sumPartNumbers += partNumber
                         # print('||||||||IS PART||||||||')
                         break

@@ -28,7 +28,7 @@ for rowIndex, line in enumerate(lines):
                 searchLine = lines[r].rstrip()
                 # print(searchLine)
                 for c in range(index - 1, index + 2):
-                    if -1 < c < len(searchLine) and not searchLine[c] == '.' and not searchLine[c] == '*':
+                    if -1 < c < len(searchLine) and searchLine[c] != '.' and searchLine[c] != '*':
                         # print('||||||||FOUND||||||||')
                         # print(f'Found at:       {c}')
                         l = c
@@ -39,7 +39,7 @@ for rowIndex, line in enumerate(lines):
                             r += 1
                         # print(f'Start at:       {l}')
                         # print(f'Got:            {searchLine[l:r]}')
-                        if not [r, l, searchLine[l:r]] in numbers:      # Or use dict [defaultdict(list)]
+                        if [r, l, searchLine[l:r]] not in numbers:      # Or use dict [defaultdict(list)]
                             numbers.append([r, l, searchLine[l:r]])
 
         if len(numbers) != 2:

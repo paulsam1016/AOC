@@ -27,7 +27,6 @@ for seed in seeds:
                 categoryNumbers.append(data)
                 break
         else:   # No mapping, so same
-            data = data
             categoryNumbers.append(data)
     seedLocations[seed] = data
     # print('Seed {}, soil {}, fertilizer {}, water {}, light {}, temperature {}, humidity {}, location {}.'.format(*categoryNumbers))

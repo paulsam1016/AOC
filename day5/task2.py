@@ -14,15 +14,17 @@ seeds = []
 
 # print(data)
 
+# Parse ranges to list
 for i in range(0, len(inputs), 2):
     seeds.append((int(inputs[i]), int(inputs[i]) + int(inputs[i + 1])))
 
 # seeds = [(79, 92)]
 
 for mapping in mappings:
-    _, *ranges = mapping.splitlines()
-    ranges = [[int(x) for x in r.split()] for r in ranges]
+    _, *ranges = mapping.splitlines()  # Removes starting text
+    ranges = [list(map(int, r.split())) for r in ranges]  # Parse ranges to list after converting to int
     new = []
+    # Continue looping till all seed ranges are used
     while len(seeds) > 0:
         # print(f'seeds:{seeds}')
         lower, upper = seeds.pop()

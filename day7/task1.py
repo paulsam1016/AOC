@@ -14,7 +14,7 @@ types = {'1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': []}
 order = ['A', 'K', 'Q', 'J', 'T', '9', '8', '7', '6', '5', '4', '3', '2']
 ranking = []
 
-print(inputs)
+# print(inputs)
 
 for hand, bid in inputs:
     counts = Counter(hand)
@@ -34,32 +34,7 @@ for hand, bid in inputs:
         case _:
             types['1'].append([hand, bid])
 
-    # if len([card for card, count in counts.items() if count == 5]) == 1:
-    #     types['7'].append([hand, bid])
-    #     continue
-    # if len([card for card, count in counts.items() if count == 4]) == 1:
-    #     types['6'].append([hand, bid])
-    #     continue
-    # if len([card for card, count in counts.items() if count == 3]) == 1:
-    #     print(temp)
-    #     temp.pop([card for card, count in temp.items() if count == 3][0])
-    #     print(temp)
-    #     if len([card for card, count in temp.items() if count == 2]) == 1:
-    #         types['5'].append([hand, bid])
-    #         continue
-    # if len([card for card, count in counts.items() if count == 3]) == 1:
-    #     types['4'].append([hand, bid])
-    #     continue
-    # if len([card for card, count in counts.items() if count == 2]) == 2:
-    #     types['3'].append([hand, bid])
-    #     continue
-    # if len([card for card, count in counts.items() if count == 2]) == 1:
-    #     types['2'].append([hand, bid])
-    #     continue
-    # if len([card for card, count in counts.items() if count == 1]) == 5:
-    #     types['1'].append([hand, bid])
-
-print(types)
+# print(types)
 
 for _type in types.values():
     if len(_type) == 1:
@@ -71,10 +46,12 @@ for _type in types.values():
         same_rank_sorted = sorted(same_rank_order.keys(), key=lambda word: [order.index(c) for c in word], reverse=True)
         # print(same_rank_order)
         # print(same_rank_sorted)
-        # print(list(map(lambda hand: same_rank_order[hand], same_rank_sorted)))
-        ranking.extend(list(map(lambda hand: same_rank_order[hand], same_rank_sorted)))
+        # print([same_rank_order[hand] for hand in same_rank_sorted])
+        # print('================================================================')
+        ranking.extend([same_rank_order[hand] for hand in same_rank_sorted])
 
-print(ranking)
+# print(ranking)
+
 total_winnings = 0
 for i, bid in enumerate(ranking):
     total_winnings += (i + 1) * int(bid)

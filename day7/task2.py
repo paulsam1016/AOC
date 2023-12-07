@@ -39,7 +39,7 @@ for hand, bid in inputs:
             types['2'].append([hand, bid])
         case _:
             types['1'].append([hand, bid])
-    # print(counts, jokers, hand)
+
 # print(types)
 
 for _type in types.values():
@@ -51,10 +51,10 @@ for _type in types.values():
         same_rank_order = {hand: bid for hand, bid in _type}
         same_rank_sorted = sorted(same_rank_order.keys(), key=lambda word: [order.index(c) for c in word], reverse=True)
         # print(same_rank_order)
-        print(same_rank_sorted)
-        # print(list(map(lambda hand: same_rank_order[hand], same_rank_sorted)))
-        print('================================================================')
-        ranking.extend(list(map(lambda hand: same_rank_order[hand], same_rank_sorted)))
+        # print(same_rank_sorted)
+        # print([same_rank_order[hand] for hand in same_rank_sorted])
+        # print('================================================================')
+        ranking.extend([same_rank_order[hand] for hand in same_rank_sorted])
 
 # print(ranking)
 total_winnings = 0

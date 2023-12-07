@@ -17,7 +17,6 @@ ranking = []
 # print(inputs)
 
 for hand, bid in inputs:
-    counts = Counter(hand)
     match [count for _, count in Counter(hand).most_common()]:
         case 5, *_:
             types['7'].append([hand, bid])

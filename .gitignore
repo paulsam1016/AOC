@@ -1,6 +1,4 @@
 # Default ignored files
-/shelf/
-/.idea/workspace.xml
-.idea/
 **/input.txt
 **/sample.txt
+**/__pycache__/**
